@@ -3,7 +3,9 @@ class Game extends Phaser.Scene {
   constructor() {
     super("game");
   }
-  preload() {}
+  preload() {
+    this.load.image("background", "");
+  }
   create() {}
 }
 export default Game;
