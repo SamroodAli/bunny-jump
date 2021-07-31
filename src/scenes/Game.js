@@ -1,6 +1,7 @@
 import Phaser from "phaser";
 import BackgroundImage from "../assets/bg_layer1.png";
 import GroundGrass from "../assets/ground_grass.png";
+import BunnyStand from "../assets/bunny1_stand.png";
 class Game extends Phaser.Scene {
   constructor() {
     super("game");
@@ -8,6 +9,7 @@ class Game extends Phaser.Scene {
   preload() {
     this.load.image("background", BackgroundImage);
     this.load.image("platform", GroundGrass);
+    this.load.image("bunny-stand", BunnyStand);
   }
   create() {
     this.add.image(240, 320, "background");
@@ -21,7 +23,7 @@ class Game extends Phaser.Scene {
       const body = platform.body;
       body.updateFromGameObject();
     }
-    console.log(platforms);
+    this.physics.add.sprite(240, 320, "bunny-stand").setScale(0.5);
   }
 }
 export default Game;
