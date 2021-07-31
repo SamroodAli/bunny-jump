@@ -3,7 +3,7 @@ class Game extends Phaser.Scene {
   constructor() {
     super("game");
   }
-  preload()
-  create()
+  preload() {}
+  create() {}
 }
 export default Game;
