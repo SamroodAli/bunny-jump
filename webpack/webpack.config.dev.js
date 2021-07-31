@@ -21,12 +21,31 @@ module.exports = {
       template: "/src/index.html",
       inject: true,
     }),
+    new webpack.DefinePlugin({
+      CANVAS_RENDERER: JSON.stringify(true),
+      WEBGL_RENDERER: JSON.stringify(true),
+    }),
   ],
   module: {
     rules: [
       {
         test: /\.s[ac]ss$/i,
         use: ["style-loader", "css-loader", "sass-loader"],
+      },
+      {
+        test: /\.js$/,
+        exclude: /node_modules/,
+        use: {
+          loader: "babel-loader",
+        },
+      },
+      {
+        test: [/\.vert$/, /\.frag$/],
+        use: "raw-loader",
+      },
+      {
+        test: /\.(gif|png|jpe?g|svg|xml)$/i,
+        use: "file-loader",
       },
     ],
   },
