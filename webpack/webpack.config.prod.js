@@ -1,6 +1,7 @@
 const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
-const { CleanWebpackPlugin } = require("clean-webpack-plugin"); // installed via npm
+const { CleanWebpackPlugin } = require("clean-webpack-plugin");
+const TerserPlugin = require("terser-webpack-plugin");
 
 module.exports = {
   entry: "./src/index.js",
@@ -16,6 +17,24 @@ module.exports = {
         test: /\.s[ac]ss$/i,
         use: ["style-loader", "css-loader", "sass-loader"],
       },
+      {
+        test: /\.js$/,
+        exclude: /node_modules/,
+        use: {
+          loader: "babel-loader",
+        },
+      },
+      {
+        test: [/\.vert$/, /\.frag$/],
+        use: "raw-loader",
+      },
+      {
+        test: /\.(gif|png|jpe?g|svg|xml)$/i,
+        loader: "file-loader",
+        options: {
+          outputPath: "assets",
+        },
+      },
     ],
   },
   plugins: [
@@ -26,4 +45,19 @@ module.exports = {
     }),
     new CleanWebpackPlugin(),
   ],
+  performance: {
+    maxEntrypointSize: 900000,
+    maxAssetSize: 900000,
+  },
+  optimization: {
+    minimizer: [
+      new TerserPlugin({
+        terserOptions: {
+          output: {
+            comments: false,
+          },
+        },
+      }),
+    ],
+  },
 };
