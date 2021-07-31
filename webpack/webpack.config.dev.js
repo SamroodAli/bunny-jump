@@ -1,10 +1,12 @@
 const path = require("path");
-const Dotenv = require("dotenv-webpack");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
+const { CleanWebpackPlugin } = require("clean-webpack-plugin");
+const webpack = require("webpack");
 
 module.exports = {
   entry: "./src/index.js",
   mode: "development",
+  devtool: "eval-source-map",
   devServer: {
     contentBase: "./dist",
     hot: true,
@@ -15,7 +17,9 @@ module.exports = {
     path: path.resolve(__dirname, "dist"),
   },
   plugins: [
-    new Dotenv(),
+    new CleanWebpackPlugin({
+      root: path.resolve(__dirname, "dist"),
+    }),
     new HtmlWebpackPlugin({
       filename: "index.html",
       template: "/src/index.html",
