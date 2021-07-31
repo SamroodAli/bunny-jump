@@ -6,6 +6,8 @@ class Game extends Phaser.Scene {
   constructor() {
     super("game");
   }
+  state = 10;
+
   preload() {
     this.load.image("background", BackgroundImage);
     this.load.image("platform", GroundGrass);

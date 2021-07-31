@@ -4,8 +4,8 @@ import Game from "./scenes/Game.js";
 
 export default new Phaser.Game({
   type: Phaser.AUTO,
-  width: 480,
-  height: 640,
+  width: screen.width,
+  height: screen.height - 200,
   scene: Game,
   physics: {
     default: "arcade",
