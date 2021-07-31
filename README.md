@@ -1,4 +1,4 @@
-# webpack-project-starter
+# Bunny Jupper
 
 
 Welcome to my webpack starter for microverse
@@ -12,16 +12,12 @@ npm install
 ```
 
 ### Project structure
-All files are in src folder. There is no need for a dist folder. script tags and style tags for files in src in html are also not necessary. They will be auto injected by webpack. You can put CDN links for bootstrap, font-awesome etc in the html file in src folder.
-
 * Write your html in `src/index.html` file.
 * Write your javascript in `src/`. 
 * Write your styles in `src/index.scss` and import it in `index.js`
 ```js
 import 'index.scss';
 ```
-* The final project assets will be in the `dist` folder after the build command in production section below. This is useful for publishing to github and for the lighthouse linter in github.
-###
 
 ## For development
 You have live updates for javacript and scss in `localhost:3000`. Refresh after changes to html.
@@ -128,3 +124,11 @@ Give a ⭐️ if you like this project!
 
 - GitHub: [@samroodAli](https://github.com/samroodAli)
 - LinkedIn: [Samrood-Ali](https://www.linkedin.com/in/samrood-ali/)
+
+
+### Attributions
+
+
+* Kenny for the game [assets](https://kenney.nl/assets/jumper-pack)
+Donate to him [here](http://donate.kenney.nl)
+* Ourcade for the tutorial and the free ebook on phaser
