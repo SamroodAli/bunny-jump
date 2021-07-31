@@ -31,6 +31,7 @@ class Game extends Phaser.Scene {
     this.player.body.checkCollision.up = false;
     this.player.body.checkCollision.left = false;
     this.player.body.checkCollision.right = false;
+    this.cameras.main.startFollow(this.player);
   }
   update() {
     const touchingDown = this.player.body.touching.down;
