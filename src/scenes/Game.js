@@ -10,7 +10,8 @@ class Game extends Phaser.Scene {
   player;
   /** @type {Phaser.Physics.Arcade.StaticGroup} */
   platforms;
-
+  /** @type {Phaser.Types.Input.Keyboard.CursorKeys} */
+  cursors;
   preload() {
     this.load.image("background", BackgroundImage);
     this.load.image("platform", GroundGrass);
