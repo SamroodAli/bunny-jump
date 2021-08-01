@@ -40,6 +40,7 @@ class Game extends Phaser.Scene {
     this.player.body.checkCollision.left = false;
     this.player.body.checkCollision.right = false;
     this.cameras.main.startFollow(this.player);
+    this.cameras.main.setDeadzone(this.scale.width * 1.5);
   }
   update() {
     this.platforms.children.iterate((child) => {
@@ -57,9 +58,10 @@ class Game extends Phaser.Scene {
     }
     if (this.cursors.left.isDown && !touchingDown) {
       this.player.setVelocityX(-200);
-    }
-    if (this.cursors.right.isDown && !touchingDown) {
+    } else if (this.cursors.right.isDown && !touchingDown) {
       this.player.setVelocityX(200);
+    } else {
+      this.player.setVelocityX(0);
     }
   }
 }
