@@ -39,6 +39,15 @@ class Game extends Phaser.Scene {
     this.cameras.main.startFollow(this.player);
   }
   update() {
+    this.platforms.children.iterate((child) => {
+      const platform = child;
+      const scrollY = this.cameras.main.scrollY;
+      if (platform.y >= scrollY + 700) {
+        platform.y = scrollY - Phaser.Math.Between(50, 100);
+        platform.body.updateFromGameObject();
+      }
+    });
+
     const touchingDown = this.player.body.touching.down;
     if (touchingDown) {
       this.player.setVelocityY(-300);
