@@ -17,7 +17,7 @@ class Game extends Phaser.Scene {
     this.load.image("bunny-stand", BunnyStand);
   }
   create() {
-    this.add.image(240, 320, "background");
+    this.add.image(240, 320, "background").setScrollFactor(1, 0);
     this.platforms = this.physics.add.staticGroup();
     for (let i = 0; i < 5; i++) {
       const x = Phaser.Math.Between(80, 400);
