@@ -16,6 +16,8 @@ class Game extends Phaser.Scene {
     this.load.image("background", BackgroundImage);
     this.load.image("platform", GroundGrass);
     this.load.image("bunny-stand", BunnyStand);
+    this.cursors = this.input.keyboard.createCursorKeys();
+    console.log(this.cursors);
   }
   create() {
     this.add.image(240, 320, "background").setScrollFactor(1, 0);
@@ -44,7 +46,7 @@ class Game extends Phaser.Scene {
       const platform = child;
       const scrollY = this.cameras.main.scrollY;
       if (platform.y >= scrollY + 700) {
-        platform.y = scrollY - Phaser.Math.Between(50, 100);
+        platform.y = scrollY - Phaser.Math.Between(50, 90);
         platform.body.updateFromGameObject();
       }
     });
@@ -52,6 +54,12 @@ class Game extends Phaser.Scene {
     const touchingDown = this.player.body.touching.down;
     if (touchingDown) {
       this.player.setVelocityY(-300);
+    }
+    if (this.cursors.left.isDown && !touchingDown) {
+      this.player.setVelocityX(-200);
+    }
+    if (this.cursors.right.isDown && !touchingDown) {
+      this.player.setVelocityX(200);
     }
   }
 }
